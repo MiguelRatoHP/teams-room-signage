@@ -1,4 +1,77 @@
-<div class="card powerpoint">
-  <iframe src="https://hp-my.sharepoint.com/personal/miguel_rato_hp_com/_layouts/15/Doc.aspx?sourcedoc={3065e0b6-1699-4ddd-9430-4444527f8584}&amp;action=embedview&amp;wdAr=1.7777777777777777&amp;wdEaaCheck=0"
-          width="100%" height="100%" frameborder="0" title="PowerPoint Viewer"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teams Room Signage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      padding: 20px;
+      font-size: 2rem;
+      text-align: center;
+      background: #1e293b;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 1rem;
+      opacity: 0.5;
+      background: #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+<header>📺 Teams Room Dashboard</header>
+
+<div class="content">
+  <div class="card">
+    <img src="ferrari HP TC10 BG.png" alt="Slide Image">
+  </div>
 </div>
+
+<footer>Auto-refresh every 60 seconds</footer>
+
+<script>
+  // Optional: refresh every 60 seconds
+  setTimeout(() => location.reload(), 60000);
+</script>
+
+</body>
+</html>
