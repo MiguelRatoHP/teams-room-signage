@@ -23,30 +23,37 @@
 </head>
 <body>
 
-  <video id="video" autoplay muted loop playsinline>
+  <!-- Video (muted is required for autoplay) -->
+  <video id="video" autoplay muted loop playsinline preload="auto">
     <source src="content.mp4" type="video/mp4">
   </video>
 
+  <!-- PNG fallback -->
   <img id="imagePng" src="content.png" alt="Signage PNG">
 
   <script>
     const video = document.getElementById("video");
     const png = document.getElementById("imagePng");
 
-    // Try video
+    // Show PNG fallback immediately
+    png.style.display = "block";
+
+    // Try to play video
     video.oncanplay = () => {
+      png.style.display = "none";   // hide fallback
       video.style.display = "block";
+      video.play().catch(() => {
+        // if still fails, fallback stays visible
+        png.style.display = "block";
+      });
     };
 
-    // If video fails to load or is missing, show PNG
     video.onerror = () => {
+      // Video failed to load → keep PNG
       png.style.display = "block";
     };
 
-    // Also show PNG if video doesn't exist at all
-    png.style.display = "block";
-
-    // Auto refresh every 60s
+    // Auto refresh every 60 seconds
     setTimeout(() => location.reload(), 60000);
   </script>
 
