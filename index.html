@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Signage</title>
+  <title>Teams Room Signage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
@@ -13,49 +13,19 @@
       background: black;
       overflow: hidden;
     }
-    video, img {
+
+    video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Video (muted is required for autoplay) -->
-  <video id="video" autoplay muted loop playsinline preload="auto">
-    <source src="content.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
   </video>
-
-  <!-- PNG fallback -->
-  <img id="imagePng" src="content.png" alt="Signage PNG">
-
-  <script>
-    const video = document.getElementById("video");
-    const png = document.getElementById("imagePng");
-
-    // Show PNG fallback immediately
-    png.style.display = "block";
-
-    // Try to play video
-    video.oncanplay = () => {
-      png.style.display = "none";   // hide fallback
-      video.style.display = "block";
-      video.play().catch(() => {
-        // if still fails, fallback stays visible
-        png.style.display = "block";
-      });
-    };
-
-    video.onerror = () => {
-      // Video failed to load → keep PNG
-      png.style.display = "block";
-    };
-
-    // Auto refresh every 60 seconds
-    setTimeout(() => location.reload(), 60000);
-  </script>
 
 </body>
 </html>
