@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Signage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     html, body {
       margin: 0;
@@ -14,7 +13,6 @@
       background: black;
       overflow: hidden;
     }
-
     video, img {
       width: 100%;
       height: 100%;
@@ -25,34 +23,30 @@
 </head>
 <body>
 
-  <!-- Video -->
   <video id="video" autoplay muted loop playsinline>
     <source src="content.mp4" type="video/mp4">
   </video>
 
-  <!-- PNG fallback -->
   <img id="imagePng" src="content.png" alt="Signage PNG">
 
   <script>
     const video = document.getElementById("video");
     const png = document.getElementById("imagePng");
 
-    // Try video first
+    // Try video
     video.oncanplay = () => {
       video.style.display = "block";
     };
 
+    // If video fails to load or is missing, show PNG
     video.onerror = () => {
-      // Fallback to PNG
-      const testPng = new Image();
-      testPng.src = "content.png";
-
-      testPng.onload = () => {
-        png.style.display = "block";
-      };
+      png.style.display = "block";
     };
 
-    // Auto refresh every 60 seconds
+    // Also show PNG if video doesn't exist at all
+    png.style.display = "block";
+
+    // Auto refresh every 60s
     setTimeout(() => location.reload(), 60000);
   </script>
 
